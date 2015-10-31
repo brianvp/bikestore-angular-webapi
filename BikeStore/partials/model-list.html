@@ -1,0 +1,62 @@
+﻿<section id="content">
+    <div class="container">
+        <div class="row">
+            <a href="#/new">Add Model</a>
+        </div>
+        <div class="row">
+            <table class="table" ng-controller="ModelListCtrl">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <select name="manufacturerSelect" id="manufacturerSelect" ng-model="search.manufacturerName">
+                                <option value="">All</option>
+                                <option ng-repeat="manufacturer in manufacturers" value="{{manufacturer.manufacturerName}}">{{manufacturer.manufacturerName}}</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select name="categorySelect" id="categorySelect" ng-model="search.categoryName">
+                                <option value="">All</option>
+                                <option ng-repeat="category in categories" value="{{category.categoryName}}">{{category.categoryName}}</option>
+                            </select>
+                        </th>
+                        <th></th>
+                        <th><input ng-model="search.modelName" /></th>
+                        <th>
+                            <select name="statusSelect" id="statusSelect" ng-model="search.statusName">
+                                <option value="">All</option>
+                                <option ng-repeat="status in statusList" value="{{status.statusName}}">{{status.statusName}}</option>
+                            </select>
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>Manufacturer</th>
+                        <th>Category</th>
+                        <th>MFG #</th>
+                        <th>Model Name</th>
+                        <th>Status</th>
+                        <th>List Price</th>
+                        <th>Description</th>
+                    </tr>
+
+                </thead>
+                <tr ng-repeat="model in models | filter:search">
+                    <td><a href="#/{{model.modelId}}">Details</a></td>
+                    <td>{{model.manufacturerName}}</td>
+                    <td>{{model.categoryName}}</td>
+                    <td>{{model.manufacturerCode}}</td>
+                    <td>{{model.modelName}}</td>
+                    <td>{{model.statusName}}</td>
+                    <td>{{model.listPrice}}</td>
+                    <td>{{model.description}}</td>
+
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</section>
